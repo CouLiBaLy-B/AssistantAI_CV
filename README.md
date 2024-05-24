@@ -1,4 +1,3 @@
-```markdown
 # Job Assistance AI
 
 Job Assistance AI est une application web développée en utilisant Streamlit, un framework python pour créer des applications de data science et de machine learning. Cette application utilise le modèle d'IA MixTraL-8x7B-Instruct-v0.1, développé par MistralAI, pour aider les utilisateurs dans leur processus de candidature.
@@ -48,4 +47,3 @@ Les contributions à ce projet sont les bienvenues. Si vous avez des idées d'am
 ## Licence
 
 Ce projet est sous licence [MIT](LICENSE).
-```
