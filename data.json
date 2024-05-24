@@ -1,0 +1,63 @@
+[
+    {
+      "nom": "Nom 1",
+      "prenom": "Prénom 1",
+      "adresse": "Adresse 1",
+      "email": "email1@example.com",
+      "numero": "06 12 34 56",
+      "poste_recherche": "Développeur",
+      "competences": ["HTML", "CSS", "JavaScript"],
+      "experiences": [
+        {
+          "titre": "Expérience 1",
+          "entreprise": "Entreprise 1",
+          "periode": "2020-2022",
+          "description": "Description de l'expérience 1"
+        },
+        {
+          "titre": "Expérience 2",
+          "entreprise": "Entreprise 2",
+          "periode": "2015-2020",
+          "description": "Description de l'expérience 2"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "Projet 1",
+          "periode": "2020-2022",
+          "description": "Description du projet 1"
+        },
+        {
+          "titre": "Projet 2",
+          "periode": "2015-2020",
+          "description": "Description du projet 2"
+        }
+      ],
+      "certification": ["Certification 1", "Certification 2"]
+    },
+    {
+      "nom": "Nom 2",
+      "prenom": "Prénom 2",
+      "adresse": "Adresse 2",
+      "email": "email2@example.com",
+      "numero": "06 78 90 12",
+      "poste_recherche": "Conseiller",
+      "competences": ["Excel", "PowerPoint", "Word"],
+      "experiences": [
+        {
+          "titre": "Expérience 3",
+          "entreprise": "Entreprise 3",
+          "periode": "2010-2015",
+          "description": "Description de l'expérience 3"
+        }
+      ],
+      "projets": [
+        {
+          "titre": "Projet 3",
+          "periode": "2015-2020",
+          "description": "Description du projet 3"
+        }
+      ],
+      "certification": ["Certification 3"]
+    }
+  ]
