@@ -7,4 +7,4 @@ pdfminer-six
 streamlit-aggrid==0.2.2-2
 reportlab
 hydralit
-dotenv
+python-dotenv
