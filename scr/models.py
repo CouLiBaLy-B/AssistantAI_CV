@@ -81,16 +81,16 @@ class ScoreResumeJob(ResumeAIStrategy):
         constituent des points faibles mineurs. Dans l'ensemble, le profil du
         candidat correspond très bien aux exigences de l'offre d'emploi.
 
-        CV : {cv}
-        Description du poste : {job_description}
+        CV : {resume}
+        Description du poste : {job_advert}
 
         Réponse :
         """
         prompt_template = PromptTemplate(
-            template=prompt, input_variables=["cv", "job_description"]
+            template=prompt, input_variables=["resume", "job_advert"]
         )
         chain = LLMChain(llm=self.llm, prompt=prompt_template)
-        result = chain({"cv": resume, "job_description": job_advert})
+        result = chain({"resume": resume, "job_advert": job_advert})
         return result
 
 
@@ -118,15 +118,15 @@ class CoverLetterGenerator(ResumeAIStrategy):
         {resume}
 
         Description du poste :
-        {job_description}
+        {job_advert}
 
         Réponse :
         """
         prompt_template = PromptTemplate(
-            template=prompt, input_variables=["resume", "job_description"]
+            template=prompt, input_variables=["resume", "job_advert"]
         )
         chain = LLMChain(llm=self.llm, prompt=prompt_template)
-        result = chain({"resume": resume, "job_description": job_advert})
+        result = chain({"resume": resume, "job_advert": job_advert})
         return result
 
 
@@ -135,49 +135,36 @@ class ResumeImprover(ResumeAIStrategy):
         super().__init__()
 
     def generate(self, resume: str, job_advert: str) -> str:
-        prompt = """Améliorez le CV ci-dessous en intégrant les compétences,
-        qualifications et expériences pertinentes à partir du CV fourni et
-        de l'annonce d'emploi. L'objectif est d'atteindre un score de
-        correspondance supérieur à 95%.
+        prompt = """Optimisez ce CV pour atteindre un score de
+        correspondance >95% avec l'offre d'emploi fournie:
 
-        Résumé : Présentez brièvement le candidat en mettant en avant ses
-        principales forces et son adéquation avec le poste visé. Incorporez
-        des mots-clés et phrases clés de l'offre d'emploi. Utiliser la
-        première personne pour les conjugaisons.
+        Résumé: Mettez en avant les principales forces du candidat et son
+        adéquation au poste via des mots-clés de l'annonce.
 
-        Compétences : Listez les compétences techniques et non techniques
-        les plus pertinentes pour le poste. Classez-les par ordre d'importance
-        et mettez en évidence celles mentionnées dans l'offre d'emploi.
+        Compétences: Listez par ordre d'importance les compétences
+        techniques/non techniques pertinentes, en mettant en évidence
+        celles de l'offre d'emploi.
 
-        Expérience professionnelle : Réorganisez et reformulez les expériences
-        pour mettre en avant les réalisations et responsabilités en lien avec
-        le poste visé. N'hésitez pas à ajouter des détails pertinents tirés
-        de l'expérience élargie du candidat.
+        Expérience: Réorganisez les expériences pour mettre en avant les
+        réalisations/responsabilités liées au poste. Ajoutez des détails
+        pertinents de l'expérience élargie.
 
-        Formation et certifications : Mettez en avant les formations, diplômes
-        et certifications en adéquation avec les exigences de l'offre d'emploi.
-        Ajoutez toute information pertinente manquante.
+        Formation/Certifications: Mettez en avant les éléments en adéquation
+        avec l'offre. Ajoutez les infos manquantes.
 
-        Projets : Mettez en avant les projets en adéquation avec les exigences
-        de l'offre d'emploi. Ajoutez des projets open source supplémentaires
-        valorisants pour le poste si necessaire.
+        Projets: Mettez en avant les projets pertinents pour l'offre.
+        Ajoutez des projets open source valorisants si nécessaire.
 
-        Informations supplémentaires : Ajoutez toute autre information
-        valorisante pour le poste, comme les implications bénévoles, les
-        récompenses, les publications, etc.
+        Informations supplémentaires: Ajoutez bénévolat, récompenses,
+        publications, etc. valorisants pour le poste.
 
-        Assurez-vous que toutes les modifications sont professionnelles,
-        concises et positives. La structure du CV doit être cohérente et
-        logique.
+        Soyez professionnel, concis et positif. La structure doit être
+        cohérente.
 
-        Résumé : {resume}
-        Offre d'emploi : {job_advert}
-
-        Contexte supplémentaire : Le candidat a une vaste expérience en dehors
-        de son historique d'emploi listé, qui pourrait être pertinente selon
-        les exigences du poste. Veuillez en tenir compte lors des ajustements
-        du CV.
-
+        Résumé: {resume}
+        Offre: {job_advert}
+        Contexte: Le candidat a une vaste expérience hors emplois listés,
+        potentiellement pertinente.
         Réponse :
         """
         prompt_template = PromptTemplate(
