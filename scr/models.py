@@ -25,6 +25,7 @@ class ResumeAIStrategy(ABC):
             max_length=10000,
             max_new_tokens=2000,
             huggingfacehub_api_token=HUGGINGFACE_HUB_API_TOKEN,
+            add_to_git_credential=True
         )
 
     @abstractmethod
